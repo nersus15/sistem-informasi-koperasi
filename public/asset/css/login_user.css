@@ -1,0 +1,59 @@
+body {
+
+    line-height: 1.5;
+    color: #322f56;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+  }
+  .signin{
+    font-family: 'Montserrat', sans-serif;
+  }
+  .h-100vh{
+    height: 100vh !important;
+  }
+  .ml-auto, .mx-auto{
+    margin-left: auto !important;
+  }
+  
+  .mr-auto, .mx-auto{
+    margin-right: auto !important;
+  }
+  .w-320px{
+    max-width: 320px !important;
+  }
+  img{
+    vertical-align: middle;
+  }
+  
+  .font-weight-bold{
+    font-weight: 700 !important;
+  }
+  .header-img img{
+    margin-top: -450px;
+  margin: 100px 200px 200px;
+  }
+  
+  /*nav-item start*/
+  .nav-item{
+    margin-right: 40px;
+  
+  }
+  .navbar {
+    background-color: #182384;
+    border-bottom: 1px solid #333;
+  }
+  
+  .nav-item {
+    margin-right: 24px;
+    font-weight: 200;
+  }
+  .nav-item.active a{
+  color: rgb(255, 255, 255) !important;
+  font-family: 'Montserrat', sans-serif;
+  }
+  .dreamatika-text h6{
+    font-size: 38px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  
