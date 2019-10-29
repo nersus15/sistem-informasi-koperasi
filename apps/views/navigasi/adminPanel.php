@@ -303,6 +303,3 @@
 
             </nav>
             <!-- End of Topbar -->
-        </div>
-    </div>
-</div>
