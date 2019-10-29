@@ -1,6 +1,12 @@
 <?php
 class admin extends controller
 {
+    public function __construct()
+    {
+        if (!isset($_SESSION['login'])) {
+            header('Location: ' . BASEURL . '/auth');
+        }
+    }
     public function index()
     {
         $data['pageTitle'] = "Admin | Dashboard";

@@ -4,14 +4,14 @@
         <div class="col w-320px">
             <img src="<?= BASEPATH . '/asset/logo/dreamatika_ellipse.png' ?>" alt="" width="60px" height="60px">
             <h1 class="h3 font-weight-bold merriweather mt-3 p-1 signin">Sign In</h1>
-            <form action="<?= BASEURL . '/akun/login' ?>" method="POST">
+            <form action="<?= BASEURL . '/auth/login' ?>" method="POST">
                 <div class="row mt-4">
                     <div class="col-auto ">
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"> <i class="fas fa-user"></i></div>
                             </div>
-                            <input type="text" name='NIK' class="form-control" style="width: 250px" id="inlineFormInputGroup" placeholder="NIK anda">
+                            <input type="text" name='user' class="form-control" style="width: 250px" id="inlineFormInputGroup" placeholder="NIK/ email anda">
                         </div>
                     </div>
                 </div>
