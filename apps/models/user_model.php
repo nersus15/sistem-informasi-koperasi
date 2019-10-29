@@ -14,8 +14,7 @@ class user_model
         $this->DB->query($query);
         $this->DB->bind('user', $user);
         $account = $this->DB->single();
-        if (isset($account)) {
-
+        if ($account !== false) {
             if (password_verify($password, $account['password'])) {
                 $_SESSION["login"] = true;
                 $_SESSION['log'] = [
@@ -33,9 +32,12 @@ class user_model
                 ];
                 header('Location:' . BASEURL . '/auth');
             } else {
-                flasher::setFlash('Username/Password Salah', 'danger');
+                flasher::setFlash('Password untuk akun ' . $user . '  Salah', 'danger');
                 header('Location:' . BASEURL . '/auth');
             }
+        } else {
+            flasher::setFlash('Username (email/NIK) ' . $user . ' Salah/ Tidak terdaftar', 'danger');
+            header('Location:' . BASEURL . '/auth');
         }
     }
 }
