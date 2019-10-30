@@ -32,4 +32,13 @@ class member_model
             header('Location:' . BASEURL . '/admin/member_menu');
         }
     }
+    public function deleteMember($id)
+    {
+        $id = implode($id);
+        $this->DB->query('DELETE FROM member WHERE id=:id');
+        $this->DB->bind('id', $id);
+        $this->DB->execute();
+        flasher::setFlash('Berhasil Menghapus Member dengan Id: ' . $id, 'success');
+        header('Location:' . BASEURL . '/admin/member_menu');
+    }
 }

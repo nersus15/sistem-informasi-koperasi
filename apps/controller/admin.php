@@ -31,4 +31,8 @@ class admin extends controller
             $this->view('footer/main');
         }
     }
+    public function deleteMember($id)
+    {
+        $this->model('member_model')->deleteMember($id);
+    }
 }

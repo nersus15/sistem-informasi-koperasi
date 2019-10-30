@@ -15,6 +15,7 @@
         <div class="col-md col-sm">
             <div><?= flasher::flash(); ?></div>
         </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -25,7 +26,7 @@
                     <th scope="col">Tanggal Lahir</th>
                     <th scope="col">Username</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col" colspan="4">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,13 +40,14 @@
                         <td><?= $member['account'] ?></td>
                         <td><?= $member['status'] ?></td>
                         <td>
-                            <button class="btn btn-sm btn-danger">Hapus</button>
-                            <button class="btn btn-sm btn-warning">Non Aktifkan</button>
+                            <a href="<?= BASEURL . '/admin/deleteMember/' . $member['id'] ?>" class="btn mt-2 btn-sm btn-danger">Hapus</a>
+                            <button class="btn mt-2 btn-sm btn-warning">Blokir</button>
                         </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
+
     </div>
 </div>
 </div>
