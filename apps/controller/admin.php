@@ -21,6 +21,7 @@ class admin extends controller
     {
         if (isset($_POST['add'])) {
             $this->model('member_model')->addMember($_POST);
+            $this->model('user_model')->signUp($_POST);
         } else {
             $data['member'] = $this->model('member_model')->getAllMember();
             $data['pageTitle'] = "Koperasi | Add Member";

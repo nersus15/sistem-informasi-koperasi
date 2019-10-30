@@ -40,4 +40,18 @@ class user_model
             header('Location:' . BASEURL . '/auth');
         }
     }
+    public function signUp($data)
+    {
+        if (!isset($data['email'])) {
+            $data['email'] = "-";
+        }
+        $id = uniqid();
+        $password = password_hash($data['NIK'], PASSWORD_DEFAULT);
+        $this->DB->query('INSERT INTO user VALUES(:id, :username, :email, :password, "default.jpg", 1, 2)');
+        $this->DB->bind('id', $id);
+        $this->DB->bind('username', $data['NIK']);
+        $this->DB->bind('email', $data['email']);
+        $this->DB->bind('password', $password);
+        $this->DB->execute();
+    }
 }
