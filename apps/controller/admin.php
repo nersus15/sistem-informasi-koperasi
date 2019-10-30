@@ -3,6 +3,7 @@ class admin extends controller
 {
     public function __construct()
     {
+        // cek apakah client sudah login
         if (!isset($_SESSION['login'])) {
             header('Location: ' . BASEURL . '/auth');
         }
