@@ -30,7 +30,7 @@
             Menu
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="<?= BASEURL . '/admin/member_menu' ?>">
                 <i class="fas fa-users-cog"></i>
                 <span>Members</span></a>
         </li>
