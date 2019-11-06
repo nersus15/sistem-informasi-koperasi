@@ -44,8 +44,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `nama_lengkap`, `alamat`, `NIK`, `tanggal_lahir`, `ktp`, `account`, `status`) VALUES
-('5db85fa51d269', 'Fathurrahman', 'Jl. Arya Banjar Getas, Tj. Karang Permai, Sekarbela, Kota Mataram, Nusa Tenggara Barat', '14115151', '2019-10-29', 'hoho.PNG', 'fathur.pashter15@gmail.co', '1'),
-('5db8f398cd86f', 'Wiwin Mistiani', 'Lombok Timur', '151251511', '2019-10-08', 'IMG_7794.JPG', 'fathur.asher15@gmail.com', '1');
+('5db85fa51d269', 'Fathurrahman', 'Jl. Arya Banjar Getas, Tj. Karang Permai, Sekarbela, Kota Mataram, Nusa Tenggara Barat', '14115151', '2019-10-29', 'hoho.PNG', 'fathur.pashter15@gmail.co', '1');
 
 -- --------------------------------------------------------
 
@@ -68,8 +67,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `img`, `status`, `role`) VALUES
-('5ccd27fba8af7', 'fathur', 'fathur.ashter15@gmail.com', '$2y$10$rONYvHAqcnptthrIJztb6eYhYQcWf86iA3S2Z1sFxEiVph76Dn/xC', '5d97f51bc7295.png', 1, 1),
-('5db8f398cf457', '151251511', 'fathur.asher15@gmail.com', '$2y$10$MZHcSDZbMgmoazcIV7cJpOCtDiLAuFbik5gIsU6ss6RnSlYQ.7Y/y', 'default.jpg', 1, 2);
+('5ccd27fba8af7', 'fathur', 'fathur.ashter15@gmail.com', '$2y$10$rONYvHAqcnptthrIJztb6eYhYQcWf86iA3S2Z1sFxEiVph76Dn/xC', '5d97f51bc7295.png', 1, 1);
 
 --
 -- Indexes for dumped tables
