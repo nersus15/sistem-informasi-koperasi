@@ -12,10 +12,7 @@ class admin extends controller
     {
         $data['pageTitle'] = "Admin | Dashboard";
         $data['user'] = $_SESSION['user_data'];
-        $this->view('header/admin', $data);
-        $this->view('navigasi/adminPanel', $data);
-        $this->view('admin/dashboard');
-        $this->view('footer/main');
+        $this->view('admin/dashboard', $data);
     }
     public function member_menu()
     {
@@ -26,10 +23,10 @@ class admin extends controller
             $data['member'] = $this->model('member_model')->getAllMember();
             $data['pageTitle'] = "Koperasi | Add Member";
             $data['user'] = $_SESSION['user_data'];
-            $this->view('header/admin', $data);
-            $this->view('navigasi/adminPanel', $data);
+            // $this->view('header/data-tables', $data);
+            // $this->view('navigasi/adminPanel', $data);
             $this->view('admin/member-menu', $data);
-            $this->view('footer/main');
+            // $this->view('footer/data-tables');
         }
     }
     public function deleteMember($id)

@@ -15,7 +15,10 @@
 
     <!-- My CSS -->
     <link rel='icon' href="<?= BASEPATH . '/asset/logo/dreamatika_ellipse.png' ?>">
+    <!-- Custom styles for this page -->
+    <link href="<?= BASEPATH . '/asset/vendor/datatables/dataTables.bootstrap4.min.css' ?>" rel="stylesheet">
     <link href="<?= BASEPATH . '/asset/css/sb-admin-2.min.css" rel="stylesheet' ?>">
+
     <title><?= $data['pageTitle'] ?></title>
 </head>
 
