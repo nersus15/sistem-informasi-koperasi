@@ -9,28 +9,21 @@ class member_model
 
     public function getAllMember()
     {
-        $this->DB->query('SELECT * FROM member');
+        $this->DB->query('SELECT * FROM member, user WHERE member.account=user.email');
         return $this->DB->resultSet();
     }
     public function addMember($data)
     {
-
-        $id = uniqid();
         $status = 1;
-        $this->DB->query('INSERT INTO member values(:id, :namaLengkap, :alamat, :NIK, :ttl, :ktp, :email, :status)');
-        $this->DB->bind('id', $id);
+        $this->DB->query('INSERT INTO member values(:NIK,  :namaLengkap, :alamat,:ttl, :ktp, :email, :status)');
         $this->DB->bind('namaLengkap', $data['namaLengkap']);
         $this->DB->bind('alamat', $data['alamat']);
-        $this->DB->bind('NIK', $data['NIK']);
-        $this->DB->bind('ttl', $data['tanggalLahir']);
-        $this->DB->bind('ktp', $_FILES['KTP']['name']);
+        $this->DB->bind('NIK', $data['nik']);
+        $this->DB->bind('ttl', $data['ttl']);
+        $this->DB->bind('ktp', $_FILES['ktp']['name']);
         $this->DB->bind('email', $data['email']);
         $this->DB->bind('status', $status);
         $this->DB->execute();
-        if ($this->DB->rowCount() > 0) {
-            flasher::setFlash('Berhasil Menambah Member', 'success');
-            header('Location:' . BASEURL . '/admin/member_menu');
-        }
     }
     public function deleteMember($id)
     {

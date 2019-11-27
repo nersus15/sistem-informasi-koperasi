@@ -23,10 +23,7 @@ class admin extends controller
             $data['member'] = $this->model('member_model')->getAllMember();
             $data['pageTitle'] = "Koperasi | Add Member";
             $data['user'] = $_SESSION['user_data'];
-            // $this->view('header/data-tables', $data);
-            // $this->view('navigasi/adminPanel', $data);
             $this->view('admin/member-menu', $data);
-            // $this->view('footer/data-tables');
         }
     }
     public function deleteMember($id)

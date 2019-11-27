@@ -46,12 +46,24 @@ class user_model
             $data['email'] = "-";
         }
         $id = uniqid();
-        $password = password_hash($data['NIK'], PASSWORD_DEFAULT);
-        $this->DB->query('INSERT INTO user VALUES(:id, :username, :email, :password, "default.jpg", 1, 2)');
+        $password = password_hash($data['nik'], PASSWORD_DEFAULT);
+        $this->DB->query('INSERT INTO user VALUES(:id, :username, :email, :password, "default.jpg", 2)');
         $this->DB->bind('id', $id);
-        $this->DB->bind('username', $data['NIK']);
+        $this->DB->bind('username', $data['nik']);
         $this->DB->bind('email', $data['email']);
         $this->DB->bind('password', $password);
         $this->DB->execute();
+        if ($this->DB->rowCount() > 0) {
+            flasher::setFlash('Berhasil Menambah Member', 'success');
+            header('Location:' . BASEURL . '/admin/member_menu');
+        } else {
+            flasher::setFlash('Gagal Menambah Member', 'danger');
+            header('Location:' . BASEURL . '/admin/member_menu');
+        }
+    }
+    public function getAllMember()
+    {
+        $this->DB->query("SELECT * FROM member");
+        return $this->DB->resultSet();
     }
 }
