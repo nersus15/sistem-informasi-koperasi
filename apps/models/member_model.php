@@ -14,13 +14,19 @@ class member_model
     }
     public function addMember($data)
     {
+        $uploadResult = utils::uploadImage($_FILES['ktp'], $data['nik']);
+        if ($uploadResult['result'] == false) {
+            flasher::setFlash($uploadResult['message'], 'danger');
+            header('Location:' . BASEURL . '/admin/member_menu');
+        }
         $status = 1;
-        $this->DB->query('INSERT INTO member values(:NIK,  :namaLengkap, :alamat,:ttl, :ktp, :email, :status)');
+        $this->DB->query('INSERT INTO member values(:NIK,  :namaLengkap, :alamat,:ttl,:jk, :ktp, :email, :status)');
         $this->DB->bind('namaLengkap', $data['namaLengkap']);
         $this->DB->bind('alamat', $data['alamat']);
         $this->DB->bind('NIK', $data['nik']);
         $this->DB->bind('ttl', $data['ttl']);
-        $this->DB->bind('ktp', $_FILES['ktp']['name']);
+        $this->DB->bind('jk', $data['jk']);
+        $this->DB->bind('ktp', $uploadResult['fileName']);
         $this->DB->bind('email', $data['email']);
         $this->DB->bind('status', $status);
         $this->DB->execute();

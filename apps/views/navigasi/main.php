@@ -36,19 +36,33 @@
         </li>
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#keuangan" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-money-check-alt"></i>
-                <span>Transaksi</span>
+                <span>Keuangan</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div id="keuangan" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Menu Transaksi:</h6>
+                    <h6 class="collapse-header">Data Keuangan:</h6>
                     <a class="collapse-item" href="utilities-color.html">Data Pinjaman</a>
                     <a class="collapse-item" href="utilities-animation.html">Tabungan Anggota</a>
                 </div>
             </div>
         </li>
-
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#transaksi" aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-money-check-alt"></i>
+                <span>Transaksi</span>
+            </a>
+            <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Permintaan:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Pengajuan Pinjaman</a>
+                    <a class="collapse-item" href="utilities-animation.html">Penarikan Tabungan</a>
+                    <a class="collapse-item" href="utilities-animation.html">Pembayaran Pinjaman</a>
+                </div>
+            </div>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -59,12 +73,6 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
     </ul>
     <!-- End of Sidebar -->
 
@@ -158,8 +166,9 @@
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Activity Log
                             </a>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="<?= BASEURL . '/auth/logout' ?>">
+                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
                             </a>
@@ -170,3 +179,21 @@
 
             </nav>
             <!-- End of Topbar -->
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a style="cursor:pointer" class="btn btn-danger" href="<?= BASEURL . '/auth/logout' ?>">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>

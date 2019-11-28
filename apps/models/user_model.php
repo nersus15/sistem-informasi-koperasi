@@ -45,13 +45,17 @@ class user_model
         if (!isset($data['email'])) {
             $data['email'] = "-";
         }
-        $id = uniqid();
+        if ($data['jk'] === 'Perempuan') {
+            $img = 'defaultP.jpg';
+        } else if ($data['jk'] === 'Laki-laki') {
+            $img = 'defaultL.jpg';
+        }
         $password = password_hash($data['nik'], PASSWORD_DEFAULT);
-        $this->DB->query('INSERT INTO user VALUES(:id, :username, :email, :password, "default.jpg", 2)');
-        $this->DB->bind('id', $id);
+        $this->DB->query('INSERT INTO user VALUES(:username, :email, :password,:img, 2)');
         $this->DB->bind('username', $data['nik']);
         $this->DB->bind('email', $data['email']);
         $this->DB->bind('password', $password);
+        $this->DB->bind('img', $img);
         $this->DB->execute();
         if ($this->DB->rowCount() > 0) {
             flasher::setFlash('Berhasil Menambah Member', 'success');

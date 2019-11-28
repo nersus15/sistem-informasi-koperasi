@@ -2,7 +2,7 @@
 <div class="container mx-auto " style="margin-top: 100px">
     <div class="row align-items-center justify-content-center h-100 align-content-center">
         <div class="col w-320px">
-            <img src="<?= BASEPATH . '/asset/logo/dreamatika_ellipse.png' ?>" alt="" width="60px" height="60px">
+            <img src="<?= BASEPATH . '/asset/img/logo/logo.jpg' ?>" alt="" width="60px" height="60px">
             <h1 class="h3 font-weight-bold merriweather mt-3 p-1 signin">Sign In</h1>
             <form action="<?= BASEURL . '/auth/login' ?>" method="POST">
                 <div class="row mt-4">
