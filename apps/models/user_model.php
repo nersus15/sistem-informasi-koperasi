@@ -22,7 +22,7 @@ class user_model
                 $_SESSION["login"] = true;
                 $_SESSION['log'] = [
                     'aksi' => 'Login',
-                    'user' => $account['nama']
+                    'user' => $account['username']
                 ];
                 $_SESSION['user_data'] = [
                     'email' => $data['email'],
@@ -54,7 +54,7 @@ class user_model
         }
         $password = password_hash($data['nik'], PASSWORD_DEFAULT);
         $this->DB->query('INSERT INTO user VALUES(:username, :email, :password,:img, 2,1)');
-        $this->DB->bind('username', $data['nik']);
+        $this->DB->bind('username', '@' . $data['nik']);
         $this->DB->bind('email', $data['email']);
         $this->DB->bind('password', $password);
         $this->DB->bind('img', $img);

@@ -1,7 +1,6 @@
 <?php
 class utils
 {
-    private $DB;
     public function __construct()
     {
         $this->DB = new database;
@@ -44,5 +43,17 @@ class utils
         } else {
             return true;
         }
+    }
+    public function getMember()
+    {
+        $this->DB->query('SELECT * FROM member WHERE member.account=:username ');
+        $this->DB->bind('username', $_SESSION['user_data']['username']);
+        return $this->DB->single();
+    }
+    function rupiahFormat($angka)
+    {
+
+        $hasil_rupiah = "Rp. " . number_format($angka, 2, ',', '.');
+        return $hasil_rupiah;
     }
 }

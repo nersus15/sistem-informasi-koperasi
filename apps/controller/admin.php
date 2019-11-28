@@ -4,7 +4,7 @@ class admin extends controller
     public function __construct()
     {
         // cek apakah client sudah login
-        if (!isset($_SESSION['login'])) {
+        if (!isset($_SESSION['login']) or $_SESSION['user_data']['role'] == 2) {
             header('Location: ' . BASEURL . '/auth');
         }
     }

@@ -38,7 +38,7 @@
                             <td class='text-danger'><?= $member['nik'] ?></td>
                             <td class='text-danger'><?= $member['nama_lengkap'] ?></td>
                             <td class='text-danger'><?= $member['alamat'] ?></td>
-                            <td class='text-danger'><?= $member['tanggal_lahir'] ?></td>
+                            <td class='text-danger'><?= date('d-F-Y', $member['tanggal_lahir']); ?></td>
                             <td class='text-danger'><?= $member['jenis_kelamin'] ?></td>
                             <td class='text-danger'><?= $member['username'] ?></td>
                             <td class='text-danger'><?= $member['email'] ?></td>
@@ -50,7 +50,7 @@
                             <td><?= $member['nik'] ?></td>
                             <td><?= $member['nama_lengkap'] ?></td>
                             <td><?= $member['alamat'] ?></td>
-                            <td><?= $member['tanggal_lahir'] ?></td>
+                            <td><?= date('d-F-Y', $member['tanggal_lahir']); ?></td>
                             <td><?= $member['jenis_kelamin'] ?></td>
                             <td><?= $member['username'] ?></td>
                             <td><?= $member['email'] ?></td>
