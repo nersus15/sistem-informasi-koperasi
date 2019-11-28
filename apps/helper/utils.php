@@ -1,6 +1,11 @@
 <?php
 class utils
 {
+    private $DB;
+    public function __construct()
+    {
+        $this->DB = new database;
+    }
 
     public static function uploadImage($data, $nik = null)
     {
@@ -28,5 +33,16 @@ class utils
             }
         }
         return $result;
+    }
+    public function getUserStatus($username)
+    {
+        $this->DB->query('SELECT user.status FROM user WHERE user.username=:username');
+        $this->DB->bind('username', $username);
+        $userStatus = $this->DB->single();
+        if ($userStatus['status'] == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

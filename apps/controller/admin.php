@@ -20,8 +20,8 @@ class admin extends controller
     public function member_menu()
     {
         if (isset($_POST['add'])) {
-            $this->model('member_model')->addMember($_POST);
             $this->model('user_model')->signUp($_POST);
+            $this->model('member_model')->addMember($_POST);
         } else {
             $data['member'] = $this->model('member_model')->getAllMember();
             $data['pageTitle'] = "Koperasi | Members";
@@ -32,8 +32,16 @@ class admin extends controller
             $this->view('footer/data-tables');
         }
     }
-    public function deleteMember($id)
+    public function delete_member($data)
     {
-        $this->model('member_model')->deleteMember($id);
+        $this->model('user_model')->deleteUser($data[0], $data[1], $data[2]);
+    }
+    public function nonaktif_member($username)
+    {
+        $this->model('user_model')->nonAktifkanUser($username);
+    }
+    public function aktif_member($username)
+    {
+        $this->model('user_model')->aktifkanUser($username);
     }
 }

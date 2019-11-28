@@ -17,6 +17,7 @@
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
+                        <th>Action</th>
                         <th>NIK</th>
                         <th>Nama Lengkap</th>
                         <th>Alamat</th>
@@ -32,20 +33,35 @@
                     <tbody>
                       <?php foreach ($data['member'] as $member) : ?>
                         <tr>
-                          <td><?= $member['nik'] ?></td>
-                          <td><?= $member['nama_lengkap'] ?></td>
-                          <td><?= $member['alamat'] ?></td>
-                          <td><?= $member['tanggal_lahir'] ?></td>
-                          <td><?= $member['jenis_kelamin'] ?></td>
-                          <td><?= $member['username'] ?></td>
-                          <td><?= $member['email'] ?></td>
-                          <td><img src="<?= BASEPATH . '/asset/img/profile/' . $member['img'] ?>" class="img-fluid" alt="<?= $member['img'] ?>"></td>
-                          <td><img src="<?= BASEPATH . '/asset/img/ktp/' . $member['ktp'] ?>" class="img-fluid" alt="<?= $member['ktp'] ?>"></td>
-                          <td><?= $member['status'] ?></td>
+                          <?php if ($member['status'] == 0) : ?>
+                            <td class='text-danger'><a class='mb-2 btn btn-xs btn-warning' href="<?= BASEURL . '/admin/aktif_member/' . $member['username'] ?>">Aktifkan</a> <a class='btn btn-xs btn-danger' href="<?= BASEURL . '/admin/delete_member/' . $member['username'] . '/' . $member['ktp'] . '/' . $member['img'] ?>">Delete</a></td>
+                            <td class='text-danger'><?= $member['nik'] ?></td>
+                            <td class='text-danger'><?= $member['nama_lengkap'] ?></td>
+                            <td class='text-danger'><?= $member['alamat'] ?></td>
+                            <td class='text-danger'><?= $member['tanggal_lahir'] ?></td>
+                            <td class='text-danger'><?= $member['jenis_kelamin'] ?></td>
+                            <td class='text-danger'><?= $member['username'] ?></td>
+                            <td class='text-danger'><?= $member['email'] ?></td>
+                            <td><img src="<?= BASEPATH . '/asset/img/profile/' . $member['img'] ?>" class="img-fluid" alt="<?= $member['img'] ?>"></td>
+                            <td><img src="<?= BASEPATH . '/asset/img/ktp/' . $member['ktp'] ?>" class="img-fluid" alt="<?= $member['ktp'] ?>"></td>
+                            <td><?= $member['status'] ?></td>
+                          <?php else : ?>
+                            <td><a class='mb-2 btn btn-xs btn-warning' href="<?= BASEURL . '/admin/nonaktif_member/' . $member['username'] ?>">Nonaktifkan</a> <a class='btn btn-xs btn-danger' href="<?= BASEURL . '/admin/delete_member/' . $member['username'] . '/' . $member['ktp'] . '/' . $member['img'] ?>">Delete</a></td>
+                            <td><?= $member['nik'] ?></td>
+                            <td><?= $member['nama_lengkap'] ?></td>
+                            <td><?= $member['alamat'] ?></td>
+                            <td><?= $member['tanggal_lahir'] ?></td>
+                            <td><?= $member['jenis_kelamin'] ?></td>
+                            <td><?= $member['username'] ?></td>
+                            <td><?= $member['email'] ?></td>
+                            <td><img src="<?= BASEPATH . '/asset/img/profile/' . $member['img'] ?>" class="img-fluid" alt="<?= $member['img'] ?>"></td>
+                            <td><img src="<?= BASEPATH . '/asset/img/ktp/' . $member['ktp'] ?>" class="img-fluid" alt="<?= $member['ktp'] ?>"></td>
+                            <td><?= $member['status'] ?></td>
+                          <? endif ?>
                         </tr>
                       <?php endforeach ?>
                     </tbody>
-                    <tfoot>
+                    <!-- <tfoot>
                       <tr>
                         <th>NIK</th>
                         <th>Nama Lengkap</th>
@@ -58,7 +74,7 @@
                         <th>KTP</th>
                         <th>Status</th>
                       </tr>
-                    </tfoot>
+                    </tfoot> -->
                   </table>
                 </div>
               </div>
