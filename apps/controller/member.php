@@ -19,9 +19,11 @@ class member extends controller
     }
     public function index()
     {
+
         $data['pageTitle'] = "Member | Dashboard";
         $data['member'] = $this->model('member_model')->getMember($_SESSION['user_data']['username']);
         $data['tabungan'] = $data['tabungan'] = $this->model('tabungan_model')->getTabunganTerakhir();
+
         if ($data['tabungan'] == null) {
             $data['tabungan'] = ['saldo' => '-', 'jumlah' => '-', 'tgl_nabung' => '-'];
         } else {
@@ -35,7 +37,7 @@ class member extends controller
     }
     public function tabungan()
     {
-        // $data['member'] = $this->model('member_model')->getAllMember();
+        $data['member'] = $this->model('member_model')->getMember($_SESSION['user_data']['username']);
         $data['pageTitle'] = "Koperasi | Members";
         $data['tabungan'] = $this->model('tabungan_model')->getLogTabungan();
         $data['user'] = $_SESSION['user_data'];
@@ -47,5 +49,9 @@ class member extends controller
     public function nabung()
     {
         $this->model('tabungan_model')->nabung($_POST);
+    }
+    public function tarik()
+    {
+        $this->model('tabungan_model')->tarikTabunga($_POST);
     }
 }

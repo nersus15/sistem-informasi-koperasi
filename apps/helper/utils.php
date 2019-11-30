@@ -56,4 +56,38 @@ class utils
         $hasil_rupiah = "Rp. " . number_format($angka, 2, ',', '.');
         return $hasil_rupiah;
     }
+    function getPengajuanTabungan()
+    {
+        $this->DB->query('SELECT * FROM simpanan_sukarela WHERE simpanan_sukarela.status="Menunggu Konfirmasi" ORDER BY simpanan_sukarela.nomer_transaksi');
+        return $this->DB->resultSet();
+    }
+    function getUserDataFromTabungan()
+    {
+        $this->DB->query('SELECT * FROM simpanan_sukarela WHERE simpanan_sukarela.status="Menunggu Konfirmasi" GROUP BY simpanan_sukarela.anggota');
+        $member = $this->DB->resultSet();
+        $user = [];
+        foreach ($member as $m) {
+            $this->DB->query('SELECT * FROM member WHERE member.nik=:member');
+            $this->DB->bind('member', $m['anggota']);
+            $memberData = $this->DB->single();
+
+            $this->DB->query('SELECT * FROM user WHERE user.username=:username');
+            $this->DB->bind('username', $memberData['account']);
+            $userData = $this->DB->single();
+            array_push($user, $userData);
+        }
+        return $user;
+    }
+    function getSaldoMember($nik)
+    {
+        $this->DB->query("SELECT sum(simpanan_sukarela.jumlah) as saldo from simpanan_sukarela WHERE simpanan_sukarela.status='Dikonfirmasi' AND simpanan_sukarela.anggota=:nik GROUP BY simpanan_sukarela.anggota");
+        $this->DB->bind('nik', $nik);
+        return $this->DB->single();
+    }
+    function getMemberFromFromTabungan($noTransaksi)
+    {
+        $this->DB->query("SELECT anggota FROM simpanan_sukarela WHERE simpanan_sukarela.nomer_transaksi=:notran");
+        $this->DB->bind('notran', $noTransaksi);
+        return $this->DB->single();
+    }
 }

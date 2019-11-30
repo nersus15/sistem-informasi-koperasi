@@ -25,7 +25,7 @@ class user_model
                     'user' => $account['username']
                 ];
                 $_SESSION['user_data'] = [
-                    'email' => $data['email'],
+                    'email' => $account['email'],
                     'username' => $account['username'],
                     'role' => $account['role'],
                     'image' => $account['img'],
