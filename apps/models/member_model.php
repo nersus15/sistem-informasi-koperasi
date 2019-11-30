@@ -39,7 +39,7 @@ class member_model
     }
     public function getMember($username)
     {
-        $this->DB->query('SELECT * FROM member JOIN user ON (member.account=user.username)');;
+        $this->DB->query('SELECT * FROM member JOIN user ON (user.username=:username and member.account=user.username)');;
         $this->DB->bind('username', $username);
         return $this->DB->single();
     }

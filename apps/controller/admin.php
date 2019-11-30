@@ -44,4 +44,21 @@ class admin extends controller
     {
         $this->model('user_model')->aktifkanUser($username);
     }
+    public function tabungan($params)
+    {
+        $page = $params[0];
+        if ($page == 'konfirmasi') {
+            $data['user'] = $_SESSION['user_data'];
+            $data['tabungan'] = $this->helper('utils')->getPengajuanTabungan();
+            $data['pageTitle'] = "Koperasi | Tabungan";
+            $this->view('header/data-tables', $data);
+            $this->view('navigasi/main', $data);
+            $this->view('admin/konfirmasi-tabungan', $data);
+            $this->view('footer/data-tables');
+        } else if ($page == 'konfirm') {
+            $noTransaksi = $params[1];
+            $jumlah = $params[2];
+            $this->model('tabungan_model')->konfirmasiTabungan($noTransaksi, $jumlah);
+        }
+    }
 }

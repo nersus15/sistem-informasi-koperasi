@@ -21,7 +21,18 @@ class auth extends controller
     public function login()
     {
         $data = $_POST;
-        $this->model('user_model')->login($data);
+        if (strlen($data['user']) == 0 && strlen($data['password']) == 0) {
+            flasher::setFlash('Field Username dan Password Kosong, Mohon Isi Username dan Password', 'danger');
+            header('Location:' . BASEURL . '/auth');
+        } else if ($data['user'] == '' && $data['password'] != '') {
+            flasher::setFlash('Field Username Kosong, Mohon Isi Username', 'danger');
+            header('Location:' . BASEURL . '/auth');
+        } else if ($data['user'] != '' && $data['password'] == '') {
+            flasher::setFlash('Field Password Kosong, Mohon Isi Password', 'danger');
+            header('Location:' . BASEURL . '/auth');
+        } else {
+            $this->model('user_model')->login($data);
+        }
     }
     public function logout()
     {

@@ -57,6 +57,7 @@
             <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Permintaan:</h6>
+                    <a class="collapse-item" href="<?= BASEURL . '/admin/tabungan/konfirmasi' ?>">Konfirmasi Tabungan</a>
                     <a class="collapse-item" href="utilities-color.html">Pengajuan Pinjaman</a>
                     <a class="collapse-item" href="utilities-animation.html">Penarikan Tabungan</a>
                     <a class="collapse-item" href="utilities-animation.html">Pembayaran Pinjaman</a>
@@ -65,7 +66,23 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#logtransaksi" aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-money-check-alt"></i>
+                <span>Log Transaksi</span>
+            </a>
+            <div id="logtransaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Permintaan:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Log Pinjaman</a>
+                    <a class="collapse-item" href="utilities-animation.html">Log Tabungan</a>
+                    <a class="collapse-item" href="utilities-animation.html">Log Pembayaran</a>
+                    <a class="collapse-item" href="<?= BASEURL . '/admin/konfirmasi-tabungan' ?>">Log Penarikan</a>
+                </div>
+            </div>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
                 <i class="fas fa-print"></i>
