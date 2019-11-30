@@ -1,6 +1,6 @@
 <?php
-define('BASEURL', 'http://localhost/koperasi');
-define('BASEPATH', 'http://localhost/koperasi/public');
+define('BASEURL', 'http://localhost/sistem-informasi-koperasi');
+define('BASEPATH', 'http://localhost/sistem-informasi-koperasi/public');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
