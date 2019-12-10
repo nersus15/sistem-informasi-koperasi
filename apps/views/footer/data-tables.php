@@ -6,7 +6,7 @@
  <script src="<?= BASEPATH . '/asset/vendor/jquery-easing/jquery.easing.min.js' ?>"></script>
 
  <!-- Custom scripts for all pages-->
- <script src="js/sb-admin-2.min.js'?>"></script>
+ <script src="<?= BASEPATH . '/asset/js/sb-admin-2.min.js' ?>"></script>
 
  <!-- Page level plugins -->
  <script src="<?= BASEPATH . '/asset/vendor/datatables/jquery.dataTables.min.js' ?>"></script>

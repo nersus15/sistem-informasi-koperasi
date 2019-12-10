@@ -46,8 +46,28 @@ class admin extends controller
     }
     public function tabungan($params)
     {
-        $page = $params[0];
-        if ($page == 'konfirmasi') {
+
+        if ($params != null) {
+            $page = $params[0];
+            if ($page == 'konfirm') {
+                $service = $params[1];
+                $noTransaksi = $params[2];
+                $jumlah = $params[3];
+                if ($service == 'nabung') {
+                    $this->model('tabungan_model')->konfirmasiTabungan($noTransaksi, $jumlah);
+                } else if ($service == 'narik') {
+                    $this->model('tabungan_model')->konfirmasiPenarikan($noTransaksi, $jumlah);
+                }
+            } else if ($page == 'tarik') {
+                $data['user'] = $_SESSION['user_data'];
+                $data['penarikan'] = $this->helper('utils')->getPengajuanPenarikan();
+                $data['pageTitle'] = "Koperasi | Tabungan";
+                $this->view('header/data-tables', $data);
+                $this->view('navigasi/main', $data);
+                $this->view('admin/konfirmasi-penarikan', $data);
+                $this->view('footer/data-tables');
+            }
+        } else {
             $data['user'] = $_SESSION['user_data'];
             $data['tabungan'] = $this->helper('utils')->getPengajuanTabungan();
             $data['pageTitle'] = "Koperasi | Tabungan";
@@ -55,10 +75,6 @@ class admin extends controller
             $this->view('navigasi/main', $data);
             $this->view('admin/konfirmasi-tabungan', $data);
             $this->view('footer/data-tables');
-        } else if ($page == 'konfirm') {
-            $noTransaksi = $params[1];
-            $jumlah = $params[2];
-            $this->model('tabungan_model')->konfirmasiTabungan($noTransaksi, $jumlah);
         }
     }
 }

@@ -57,9 +57,9 @@
             <div id="transaksi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Permintaan:</h6>
-                    <a class="collapse-item" href="<?= BASEURL . '/admin/tabungan/konfirmasi' ?>">Konfirmasi Tabungan</a>
+                    <a class="collapse-item" href="<?= BASEURL . '/admin/tabungan' ?>">Konfirmasi Tabungan</a>
                     <a class="collapse-item" href="utilities-color.html">Pengajuan Pinjaman</a>
-                    <a class="collapse-item" href="utilities-animation.html">Penarikan Tabungan</a>
+                    <a class="collapse-item" href="<?= BASEURL . '/admin/tabungan/tarik' ?>">Penarikan Tabungan</a>
                     <a class="collapse-item" href="utilities-animation.html">Pembayaran Pinjaman</a>
                 </div>
             </div>

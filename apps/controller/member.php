@@ -22,13 +22,19 @@ class member extends controller
 
         $data['pageTitle'] = "Member | Dashboard";
         $data['member'] = $this->model('member_model')->getMember($_SESSION['user_data']['username']);
-        $data['tabungan'] = $data['tabungan'] = $this->model('tabungan_model')->getTabunganTerakhir();
-
+        $data['tabungan'] = $this->model('tabungan_model')->getTabunganTerakhir();
+        $data['penarikan'] = $this->model('tabungan_model')->getPenarikanTerakhir();
         if ($data['tabungan'] == null) {
             $data['tabungan'] = ['saldo' => '-', 'jumlah' => '-', 'tgl_nabung' => '-'];
         } else {
+            $data['tabungan']['saldo'] = $this->helper('utils')->getSaldoTerbesar($data['tabungan']['anggota'])['saldo'];
             $data['tabungan']['saldo'] = $this->helper('utils')->rupiahFormat($data['tabungan']['saldo']);
             $data['tabungan']['jumlah'] = $this->helper('utils')->rupiahFormat($data['tabungan']['jumlah']);
+        }
+        if ($data['penarikan'] == null) {
+            $data['penarikan'] = ['jumlah' => '-', 'tgl_penarikan' => '-'];
+        } else {
+            $data['penarikan']['jumlah'] = $this->helper('utils')->rupiahFormat($data['penarikan']['jumlah']);
         }
         $this->view('header/admin', $data);
         $this->view('navigasi/mainPrimary', $data);
@@ -41,6 +47,9 @@ class member extends controller
         $data['pageTitle'] = "Koperasi | Members";
         $data['tabungan'] = $this->model('tabungan_model')->getLogTabungan();
         $data['user'] = $_SESSION['user_data'];
+        $data['penarikan'] = $this->model('tabungan_model')->getLogPenarikan();
+        // var_dump($data['tabungan']);
+        // die;
         $this->view('header/data-tables', $data);
         $this->view('navigasi/mainPrimary', $data);
         $this->view('member/tabungan', $data);
@@ -52,6 +61,6 @@ class member extends controller
     }
     public function tarik()
     {
-        $this->model('tabungan_model')->tarikTabunga($_POST);
+        $this->model('tabungan_model')->tarikTabungan($_POST);
     }
 }

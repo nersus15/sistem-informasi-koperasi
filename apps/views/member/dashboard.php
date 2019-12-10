@@ -13,7 +13,11 @@
                         <td>
                             <img class="img-fluid" src="<?= BASEPATH . '/asset/img/profile/' . $data['member']['img'] ?>" alt="">
                         </td>
-                        <th>Informasi Pribadi</th>
+                        <th>
+                            <p>Informasi Pribadi</p>
+                            <button class="btn btn-sm btn-outline-warning">Edit</button>
+                        </th>
+
                     </tr>
                     <tr>
                         <th>NIK: </th>
@@ -62,12 +66,25 @@
 
                     </tr>
                     <tr>
+                        <th>Terkhir Mengambil Tabungan: </th>
+                        <?php if ($data['penarikan']['tgl_penarikan'] == '-') : ?>
+                            <td><?= $data['penarikan']['tgl_penarikan'] ?></td>
+                        <?php else : ?>
+                            <td><?= date('d M Y', $data['penarikan']['tgl_penarikan']); ?></td>
+                        <?php endif ?>
+
+                    </tr>
+                    <tr>
                         <th>Terkhir Meminjam: </th>
                         <td>24 Agustus 2019</td>
                     </tr>
                     <tr>
                         <th> Jumlah Setoran Terakhir: </th>
                         <td><?= $data['tabungan']['jumlah'] ?></td>
+                    </tr>
+                    <tr>
+                        <th> Jumlah Terakhir yang diambil: </th>
+                        <td><?= $data['penarikan']['jumlah'] ?></td>
                     </tr>
                     <tr>
                         <th> Jumlah Pinjaman Terakhir: </th>

@@ -28,14 +28,14 @@
                              <tbody>
                                  <?php foreach ($data['tabungan'] as $tabungan) : ?>
                                      <tr>
-                                         <td class='text-danger'><a class='mb-2 btn btn-xs btn-success' href="<?= BASEURL . '/admin/tabungan/konfirm/' . $tabungan['nomer_transaksi'] . '/' . base64_encode($tabungan['jumlah']); ?>">Konfirmasi</a> </td>
+                                         <td class='text-danger'><a class='mb-2 btn btn-xs btn-success' href="<?= BASEURL . '/admin/tabungan/konfirm/nabung/' . $tabungan['nomer_transaksi'] . '/' . base64_encode($tabungan['jumlah']); ?>">Konfirmasi</a> </td>
                                          <td class='text-danger'><?= $tabungan['nomer_transaksi'] ?></td>
                                          <td class='text-danger'><?= $tabungan['anggota'] ?></td>
                                          <td class='text-danger'><?= date('d-F-Y', $tabungan['tgl_nabung']); ?></td>
                                          <?php if ($utils->getSaldoMember($tabungan['anggota']) == false) : ?>
                                              <td class='text-danger'>-</td>
                                          <?php else : ?>
-                                             <td class='text-danger'><?= utils::rupiahFormat((int) $utils->getSaldoMember($tabungan['anggota'])['saldo']); ?></td>
+                                             <td class='text-danger'><?= utils::rupiahFormat((int) $utils->getSaldoTerbesar($tabungan['anggota'])['saldo']); ?></td>
                                          <? endif ?>
                                          <td class='text-danger'><?= utils::rupiahFormat($tabungan['jumlah']) ?></td>
                                          <td class='text-danger'><?= $tabungan['status'] ?></td>

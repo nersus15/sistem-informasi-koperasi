@@ -61,6 +61,11 @@ class utils
         $this->DB->query('SELECT * FROM simpanan_sukarela WHERE simpanan_sukarela.status="Menunggu Konfirmasi" ORDER BY simpanan_sukarela.nomer_transaksi');
         return $this->DB->resultSet();
     }
+    function getPengajuanPenarikan()
+    {
+        $this->DB->query('SELECT * FROM penarikan WHERE penarikan.status="Menunggu Konfirmasi" ORDER BY penarikan.nomer_transaksi');
+        return $this->DB->resultSet();
+    }
     function getUserDataFromTabungan()
     {
         $this->DB->query('SELECT * FROM simpanan_sukarela WHERE simpanan_sukarela.status="Menunggu Konfirmasi" GROUP BY simpanan_sukarela.anggota');
@@ -84,9 +89,21 @@ class utils
         $this->DB->bind('nik', $nik);
         return $this->DB->single();
     }
+    function getSaldoTerbesar($nik)
+    {
+        $this->DB->query("SELECT saldo from simpanan_sukarela WHERE simpanan_sukarela.status='Dikonfirmasi' AND simpanan_sukarela.anggota=:nik ORDER BY saldo DESC LIMIT 1");
+        $this->DB->bind('nik', $nik);
+        return $this->DB->single();
+    }
     function getMemberFromFromTabungan($noTransaksi)
     {
         $this->DB->query("SELECT anggota FROM simpanan_sukarela WHERE simpanan_sukarela.nomer_transaksi=:notran");
+        $this->DB->bind('notran', $noTransaksi);
+        return $this->DB->single();
+    }
+    function getMemberFromPenarikan($noTransaksi)
+    {
+        $this->DB->query("SELECT anggota FROM penarikan WHERE penarikan.nomer_transaksi=:notran");
         $this->DB->bind('notran', $noTransaksi);
         return $this->DB->single();
     }
