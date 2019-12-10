@@ -61,6 +61,12 @@ class member extends controller
     }
     public function tarik()
     {
-        $this->model('tabungan_model')->tarikTabungan($_POST);
+        $data['member'] = $this->model('member_model')->getMember($_SESSION['user_data']['username']);
+        if ($this->helper('utils')->getSaldoTerbesar($data['member']['nik']) == false or $this->helper('utils')->getSaldoTerbesar($data['member']['nik'])['saldo'] <= 0) {
+            flasher::setFlash('Gagal, Saldo Tidak Cukup', 'danger');
+            header('Location:' . BASEURL . '/member/tabungan');
+        } else {
+            $this->model('tabungan_model')->tarikTabungan($_POST);
+        }
     }
 }

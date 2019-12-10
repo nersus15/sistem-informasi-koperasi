@@ -86,18 +86,18 @@
                                  <!-- Button trigger modal -->
                                  <!-- <button class='btn btn-xs btn-primary' data-toggle="modal" data-target="#nabungModal">Nabung</button>
                                  <button class='btn btn-xs btn-warning' data-toggle="modal" data-target="#tarikModal">Tarik Tabungan</button> -->
-
+                                 <p id="buttons">Cetak Atau Export Data</p>
                              </div>
                              <div class="card-body">
                                  <div class="table-responsive">
-                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                     <table class="table table-bordered" id="penarikanTable" width="100%" cellspacing="0">
                                          <thead>
                                              <tr>
                                                  <th>Nomer Transaksi</th>
                                                  <th>NIK</th>
                                                  <th>Nama Lengkap</th>
                                                  <th>Username</th>
-                                                 <th>Tanggal Nabung</th>
+                                                 <th>Tanggal Pengambilan</th>
                                                  <th>Jumlah</th>
                                                  <th>Saldo Sebelumnya</th>
                                                  <th>Status</th>

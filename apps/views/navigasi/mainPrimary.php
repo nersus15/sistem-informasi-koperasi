@@ -43,12 +43,6 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
-
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-print"></i>
-                <span>Cetak Transaksi</span></a>
-        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
     </ul>
