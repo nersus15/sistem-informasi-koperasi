@@ -82,28 +82,26 @@ class tabungan_model
         $this->DB->bind('jumlah', (int) base64_decode($jumlah));
         $this->DB->bind('saldoSebelumnya', (int) $saldoSebelumnya);
         $this->DB->execute();
+        $saldo = (int) $saldoSebelumnya + (int) base64_decode($jumlah);
+        $tabungan = ['tabungan' => $saldo];
+        $jsonfile = json_encode($tabungan, JSON_PRETTY_PRINT);
+        file_put_contents('tabungan.json', $jsonfile);
         flasher::setFlash('Tabungan denan Nomer Transaksi: ' . $noTransaksi . 'Berhasil dikonfirmasi', 'success');
         header('Location: ' . BASEURL . '/admin/tabungan');
     }
     function konfirmasiPenarikan($noTransaksi, $jumlah)
     {
         $nik = $this->utils->getMemberFromPenarikan((int) $noTransaksi)['anggota'];
-        $saldoSebelumnya = $this->utils->getSaldoMember($nik);
         $saldoTerbesar = $this->utils->getSaldoTerbesar($nik);
         if ($saldoTerbesar == false) {
             $saldoTerbesar = 0;
         } else {
             $saldoTerbesar = $saldoTerbesar['saldo'];
         }
-        if ($saldoSebelumnya == false) {
-            $saldoSebelumnya = 0;
-        } else {
-            $saldoSebelumnya = $saldoSebelumnya['saldo'];
-        }
-        $this->DB->query("UPDATE penarikan SET penarikan.status='Dikonfirmasi',sisa_saldo=:saldoSebelumnya-:jumlah WHERE penarikan.nomer_transaksi=:noTransaksi");
+
+        $this->DB->query("UPDATE penarikan SET penarikan.status='Dikonfirmasi',sisa_saldo=penarikan.saldo_sebelumnya-:jumlah WHERE penarikan.nomer_transaksi=:noTransaksi");
         $this->DB->bind('noTransaksi', (int) $noTransaksi);
         $this->DB->bind('jumlah', (int) base64_decode($jumlah));
-        $this->DB->bind('saldoSebelumnya', (int) $saldoSebelumnya);
         $this->DB->execute();
 
         $this->DB->query('UPDATE simpanan_sukarela set saldo=:saldoTerbesar-:jumlah WHERE simpanan_sukarela.anggota=:nik AND saldo=:saldoTerbesar');
@@ -111,6 +109,11 @@ class tabungan_model
         $this->DB->bind('saldoTerbesar', (int) $saldoTerbesar);
         $this->DB->bind('nik', $nik);
         $this->DB->execute();
+
+        $saldo = (int) $saldoTerbesar - (int) base64_decode($jumlah);
+        $tabungan = ['tabungan' => $saldo];
+        $jsonfile = json_encode($tabungan, JSON_PRETTY_PRINT);
+        file_put_contents('tabungan.json', $jsonfile);
         flasher::setFlash('Tabungan denan Nomer Transaksi: ' . $noTransaksi . 'Berhasil dikonfirmasi', 'success');
         header('Location: ' . BASEURL . '/admin/tabungan/tarik');
     }

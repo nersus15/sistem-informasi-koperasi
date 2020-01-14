@@ -4,6 +4,7 @@ class controller
     public function view($view, $data = [])
     {
 
+        extract($data);
         require_once 'apps/views/' . $view . '.php';
     }
     public function model($model)

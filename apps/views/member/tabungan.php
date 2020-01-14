@@ -24,6 +24,7 @@
                          <div class="card shadow mb-4">
                              <div class="card-header py-3">
                                  <h6 class="float-left mr-3 m-0 font-weight-bold text-primary">Catatan Tabungan</h6>
+                                 <br> <small class="float-left">Saldo Terakhir: <?= utils::rupiahFormat(json_decode(file_get_contents('tabungan.json'), true)['tabungan']) ?></small>
                                  <!-- Button trigger modal -->
                                  <button class='btn btn-xs btn-primary' data-toggle="modal" data-target="#nabungModal">Nabung</button>
                                  <button class='btn btn-xs btn-warning' data-toggle="modal" data-target="#tarikModal">Tarik Tabungan</button>
@@ -31,7 +32,7 @@
                              </div>
                              <div class="card-body">
                                  <div class="table-responsive">
-                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                     <table class="table table-bordered" id="tabunganTable" width="100%" cellspacing="0">
                                          <thead>
                                              <tr>
                                                  <th>Nomer Transaksi</th>
@@ -41,7 +42,7 @@
                                                  <th>Tanggal Nabung</th>
                                                  <th>Jumlah</th>
                                                  <th>Saldo Sebelumnya</th>
-                                                 <th>Saldo Sekarang</th>
+                                                 <th>Saldo Sekarang [Setelah Penarikan] </th>
                                                  <th>Status</th>
                                              </tr>
                                          </thead>
@@ -83,6 +84,7 @@
                          <div class="card shadow mb-4">
                              <div class="card-header py-3">
                                  <h6 class="float-left mr-3 m-0 font-weight-bold text-primary">Catatan Penarikan Tabungan</h6>
+                                 <br> <small class="float-left">Saldo Terakhir: <?= utils::rupiahFormat(json_decode(file_get_contents('tabungan.json'), true)['tabungan']) ?></small>
                                  <!-- Button trigger modal -->
                                  <!-- <button class='btn btn-xs btn-primary' data-toggle="modal" data-target="#nabungModal">Nabung</button>
                                  <button class='btn btn-xs btn-warning' data-toggle="modal" data-target="#tarikModal">Tarik Tabungan</button> -->

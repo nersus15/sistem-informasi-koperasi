@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                         <th>Saldo: </th>
-                        <td><?= $data['tabungan']['saldo']; ?></td>
+                        <td><?= utils::rupiahFormat(json_decode(file_get_contents('tabungan.json'), true)['tabungan']) ?></td>
                     </tr>
                     <tr>
                         <th>Terkhir Setoran/ Menabung: </th>

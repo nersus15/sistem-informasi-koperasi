@@ -48,6 +48,12 @@ class member extends controller
         $data['tabungan'] = $this->model('tabungan_model')->getLogTabungan();
         $data['user'] = $_SESSION['user_data'];
         $data['penarikan'] = $this->model('tabungan_model')->getLogPenarikan();
+        if ($data['tabungan'] == null) {
+            $data['saldo'] = '-';
+        } else {
+            $data['saldo'] = $this->helper('utils')->getSaldoTerbesar($data['member']['nik'])['saldo'];
+            $data['saldo'] = $this->helper('utils')->rupiahFormat($data['saldo']);
+        }
         // var_dump($data['tabungan']);
         // die;
         $this->view('header/data-tables', $data);
@@ -68,5 +74,15 @@ class member extends controller
         } else {
             $this->model('tabungan_model')->tarikTabungan($_POST);
         }
+    }
+    function pinjaman()
+    {
+        $data['user'] = $_SESSION['user_data'];
+        $data['member'] = $this->model('member_model')->getMember($_SESSION['user_data']['username']);
+        $data['pageTitle'] = "Koperasi | Members";
+        $this->view('header/data-tables', $data);
+        $this->view('navigasi/mainPrimary', $data);
+        $this->view('member/pinjaman', $data);
+        $this->view('footer/data-tables');
     }
 }
